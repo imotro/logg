@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<style>
+                    ::-webkit-scrollbar{
+        background-color: black;
+        width:5px;
+      }
+      ::-webkit-scrollbar-thumb{
+        background:#2a2a2a;
+      }
+    @font-face{
+        font-family:'Merriweather';
+        src:url(https://fonts.gstatic.com/s/merriweather/v30/u-440qyriQwlOrhSvowK_l5-fCZM.woff2);
+      }
+
+      body{
+        margin:0px;
+        background: #530221;
+        color:white;
+        overflow-x:hidden;
+        scroll-behavior: smooth;
+        margin: 0 25%;
+      }
+      *{
+        font-family:Merriweather;
+      }
+header {
+  padding: 20px 0;
+  outline:1px solid black;
+}
+
+header .row,
+footer .row {
+  display: flex;
+  align-items: center;
+}
+
+header h1 {
+  font-weight: 700;
+  margin: 0;
+}
+
+header nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+header p {
+  padding: 0 20px;
+  margin: 0;
+  font-weight:bold;
+}
+
+header p:hover {
+  text-decoration: underline 2px solid black;
+  cursor:pointer;
+}
+header {
+    width: 100vw;
+    position: relative;
+    left: -50%;
+    padding-left: 20px;
+}
+</style>
+    </head>
+    <body>
+        <header class="container">
+            <div class="row">
+              <h1 class="col-sm-8">SHRUG</h1>
+              <nav class="col-sm-4">
+                <p onclick = "parent.location.href = '/?/write'">Start Writing</p>
+                <p onclick = "parent.location.href = '/?/search'">Search Blogs</p>
+                <p onclick = "parent.location.href = '/?/'">Home</p>
+              </nav>
+            </div>
+          </header>
+          <body>
+            <input type="text" id="searchInput" placeholder="Search...">
+            <ul id="resultList"></ul>
+        
+            <script>
+                let shrug = {
+        log: (e)=>{console.log("%c[SHRUG]%c "+e, "color:orange", "color:white")},
+        get: (url, json)=>{let xhr = new XMLHttpRequest();xhr.open('GET',url,false);xhr.send();if(xhr.status===200){if(json)return JSON.parse(xhr.responseText);return xhr.responseText; } else { throw new Error('Synchronous fetch failed with status ' + xhr.status); } }
+      }
+                document.getElementById('searchInput').addEventListener('input', function () {
+                    searchJson(this.value);
+                });
+        
+                function searchJson(query) {
+                   let data = shrug.get('data.json', true)
+                   displayResults(data, query)
+                }
+                function displayResults(data, query) {
+                    const resultList = document.getElementById('resultList');
+                    resultList.innerHTML = '';
+        
+                    Object.keys(data).forEach(item => {
+                        if (containsQuery(item, query)) {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<strong>${highlightText(item, query)}</strong> - ${highlightText(item.author, query)} - <a href="${item.link}" target="_blank">${item.link}</a>`;
+                            resultList.appendChild(li);
+                        }
+                    });
+                }
+        
+                function containsQuery(item, query) {
+                    return (
+                        item.name.toLowerCase().includes(query.toLowerCase()) ||
+                        item.author.toLowerCase().includes(query.toLowerCase()) ||
+                        item.link.toLowerCase().includes(query.toLowerCase())
+                    );
+                }
+        
+                function highlightText(text, query) {
+                    const regex = new RegExp(`(${query})`, 'gi');
+                    return text.replace(regex, '<span class="highlight">$1</span>');
+                }
+            </script>
+        </body>
+    </body>
+<html>

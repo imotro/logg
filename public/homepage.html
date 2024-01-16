@@ -1,0 +1,281 @@
+<head>
+    <title>SHRUG</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+<style>
+
+  footer.container{
+    padding:0px;
+    background-color:#afafaf;
+  }
+  div.container{
+    background-color:transparent;
+  }
+  body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  background:#530221;
+}
+
+header {
+  padding: 20px 0;
+}
+
+header .row,
+footer .row {
+  display: flex;
+  align-items: center;
+}
+
+header h1 {
+  font-weight: 700;
+  margin: 0;
+}
+
+header nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+header p {
+  padding: 0 20px;
+  margin: 0;
+  font-weight:bold;
+}
+
+header p:hover {
+  text-decoration: underline 2px solid black;
+  cursor:pointer;
+}
+a{
+  text-underline: none;
+  color:yellow;
+}
+a:hover {
+  text-decoration: underline 2px solid black;
+  cursor:pointer;
+}
+.jumbotron {
+  display: flex;
+  align-items: center;
+  background-image: url('https://www.cyberworx.in/images/services/website-startups.jpg');
+  background-size: cover;
+  color: #ffffff;
+  height: 500px;
+  text-shadow: 0.25px 0.25px 0.25px #000000;
+}
+@font-face{
+        font-family:'Merriweather';
+        src:url(https://fonts.gstatic.com/s/merriweather/v30/u-440qyriQwlOrhSvowK_l5-fCZM.woff2);
+      }
+
+
+.jumbotron h2 {
+  font-size: 60px;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.jumbotron h3 {
+  margin: 10px 0 20px;
+  color: #fff;
+}
+
+section .row img {
+  margin: 0 0 30px;
+  width: 100%;
+}
+
+.col-md-6 {
+  margin: 0 0 30px;
+}
+
+.btn.btn-primary {
+    border-radius: 2px;
+    border: 0px;
+    font-size: 18px;
+    color: #000000;
+    text-shadow: none;
+    background-color: #ffffff;
+}
+
+.btn.btn-primary:hover {
+  color: #ffffff;
+  background-color: #fbd1d5;
+}
+
+.btn-secondary {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  display: inline-block;
+  font-size: 1em;
+  padding: 1em 2em;
+  margin-top: 100px;
+  margin-bottom: 60px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #0081ff;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px rgba(0, 130, 255, 0.5);
+  margin: 0 0 30px;
+}
+.btn.btn-secondary:hover {
+    color: #ffffff;
+    box-shadow: 0 2px 50px rgba(0, 0, 0, 0.6);
+    background: #000;
+}
+footer {
+  font-size: 12px;
+  padding: 20px 0;
+  background: #dddddd;
+  margin-top: 10px;
+  width:100vw;
+}
+msg{
+  background:black;
+}
+
+footer .col-sm-8 {
+  display: flex;
+  justify-content: flex-end;
+}
+::-webkit-scrollbar{
+        background-color: black;
+        width:5px;
+      }
+      ::-webkit-scrollbar-thumb{
+        background:#2a2a2a;
+      }
+
+footer ul {
+  list-style: none;
+  cursor: pointer;
+}
+
+footer li img {
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+ background-color: #000000;
+}
+ @media (min-width:768){
+  footer {
+    font-size: 12px;
+    padding: 20px 0;
+    background: #dddddd;
+    margin-top: 10px;
+    width:100vw;
+  }
+ }
+@keyframes customAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+.transition-element {
+  animation: customAnimation 2s ease-out;
+  animation-iteration-count: infinite;
+  opacity: 1;
+  transform: translateY(-20px);
+}
+
+*{
+  font-family:Merriweather;
+}
+
+header, div{
+  background:#530221;
+  color:white;
+}
+  </style>
+<script>
+  onload = () =>{
+    let i = 0;
+    window.rotate = ()=>{
+      let $ = (s)=>{return document.querySelector(s)}
+      let el = $('msg')
+      let words = ['ahh', 'cool', 'nice', 'sigma', 'gnarly', 'tubular', 'epical', 'radical', 'sick', 'decent', 'epic'];
+      i++
+      $('msg').innerText = words[i % words.length];
+     }
+    addEventListener("animationiteration", (event) => {
+      rotate()
+    });
+}
+</script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+  </head>
+  
+  <body>
+    <header class="container">
+      <div class="row">
+        <h1 class="col-sm-8">SHRUG</h1>
+        <nav class="col-sm-4">
+          <p onclick = "parent.location.href = '/?/write'">Start Writing</p>
+          <p onclick = "parent.location.href = '/?/search'">Search Blogs</p>
+          <p onclick = "parent.location.href = '/?/'">Home</p>
+        </nav>
+      </div>
+    </header>
+    <section class="jumbotron">
+      <div class="container">
+          <h2>Write <msg class="transition-element">ahh</msg> <br>Blogs</h2>
+          <br>
+          <a class="btn btn-primary" href="#" onclick="window.parent.location.href = '/?/write'">Start now</a>
+      </div>
+    </section>
+    <section class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Lightning-fast download speeds</h3>
+         <p>Welcome to Shrug – where simplicity meets efficiency in the world of blogging. Shrug is not just another blog website; it's a revolutionary platform designed to enhance your blogging experience. What sets Shrug apart is its unique system that optimizes network requests, allowing you to access any blog on the platform seamlessly. Say goodbye to slow-loading pages and hello to a faster, more responsive blogging environment.</p>
+<br>
+            <p>At the heart of Shrug's innovation is its ability to load multiple blogs on the same page. This means that as you navigate through different blogs, the platform intelligently streamlines the loading process, ensuring a swift and uninterrupted browsing experience. Whether you're a reader exploring diverse content or a blogger managing your posts, Shrug's system is geared towards making your time on the platform smooth and enjoyable.</p>
+<br>
+            <p>One of the standout features of Shrug is its user-friendly approach – no signups required. We believe in breaking down barriers and empowering everyone to share their thoughts effortlessly. You can start writing and expressing yourself without the hassle of creating an account. Shrug is about embracing the freedom of expression, and we've made sure that the process is as straightforward as possible.</p>
+<br>
+            <p>Join the Shrug community today and discover a blogging platform that prioritizes speed, simplicity, and inclusivity. Experience a new era of blogging where your journey begins with just a click – no signups, no delays, just pure, unadulterated blogging. Shrug – because your words deserve to be heard without any unnecessary hurdles.</p>
+        </div>
+      <div class="row text-center">
+      </div>
+    </section>
+    <footer class="container">
+      <div class="row">
+        <p class="col-sm-4">&copy; 2024 SHRUG</p>
+        <br>
+        <br>
+        <ul class="col-sm-8">
+          <li class="col-sm-1">
+            <img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/twitter.svg">
+          </li>
+          <li class="col-sm-1">
+            <img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/facebook.svg">
+          </li>
+          <li class="col-sm-1">
+            <img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/instagram.svg">
+          </li>
+          <li class="col-sm-1">
+            <img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/medium.svg">
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>

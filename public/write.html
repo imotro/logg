@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
+
+        <style>
+                ::-webkit-scrollbar{
+        background-color: black;
+        width:5px;
+      }
+      ::-webkit-scrollbar-thumb{
+        background:#2a2a2a;
+      }
+    @font-face{
+        font-family:'Merriweather';
+        src:url(https://fonts.gstatic.com/s/merriweather/v30/u-440qyriQwlOrhSvowK_l5-fCZM.woff2);
+      }
+
+      body{
+        margin:0px;
+        background: #530221;
+        color:white;
+        overflow-x:hidden;
+        scroll-behavior: smooth;
+        margin: 0 25%;
+      }
+      *{
+        font-family:Merriweather;
+      }
+header {
+  padding: 20px 0;
+  outline:1px solid black;
+}
+
+header .row,
+footer .row {
+  display: flex;
+  align-items: center;
+}
+
+header h1 {
+  font-weight: 700;
+  margin: 0;
+}
+
+header nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+header p {
+  padding: 0 20px;
+  margin: 0;
+  font-weight:bold;
+}
+
+header p:hover {
+  text-decoration: underline 2px solid black;
+  cursor:pointer;
+}
+header {
+    width: 100vw;
+    position: relative;
+    left: -50%;
+    padding-left: 20px;
+}
+
+a {
+  text-decoration:none;
+  background:black;
+  color:white;
+}
+
+a:hover {
+  filter:invert(1)
+}
+
+i#note{
+  font-size:10px;
+  color:gray;
+}
+
+table{
+  min-width:100%;
+}
+
+body > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div{
+  min-height:250px;
+}
+body > div.ck-body-wrapper > div > div.ck.ck-balloon-panel.ck-balloon-panel_position_border-side_right.ck-powered-by-balloon > div{
+  display:none;
+}
+
+body > div.ck.ck-reset.ck-editor.ck-rounded-corners{
+  filter:invert(1)
+}
+/* counter-invert */
+body > div.ck.ck-reset.ck-editor.ck-rounded-corners > div.ck.ck-editor__main > div > *{
+  filter:invert(1)
+}
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    border-color: #000000;
+}
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    border-color: #000000;
+}
+        </style>
+    </head>
+    <header class="container">
+        <div class="row">
+          <h1 class="col-sm-8">SHRUG</h1>
+          <nav class="col-sm-4">
+            <p onclick = "parent.location.href = '/?/write'">Start Writing</p>
+            <p onclick = "parent.location.href = '/?/search'">Search Blogs</p>
+            <p onclick = "parent.location.href = '/?/'">Home</p>
+          </nav>
+        </div>
+      </header>
+    <body>
+<center><h1>Write a blog</h1></center>
+<hr>
+<br>
+<p>Another great thing about the Shrug platform – you don't need to sign up! Simply set up your profile, and it will be loaded later from your browser. You will be able to change your profile picture, but for security purposes, you can not change your name. Choose Wisely!</p>
+<i id="note">Note: you can write in <a href="https://www.markdownguide.org/"> Markdown</a> and it will be parsed by Shrug</i>
+<br><i id="note">Note: you can use default keybinds (<kbd>crtl</kbd> + <kbd>i</kbd>), (<kbd>crtl</kbd> + <kbd>b</kbd>) to edit text</i>
+<br>
+<br>
+<textarea id="editor" rows="5">
+  j
+
+  
+<center></textarea>
+  <br><br><h3>Keybinds</h3>
+<table border="3px solid white">
+  <thead>
+    <tr>
+      <th>Functionality</th>
+      <th>PC Keybind</th>
+      <th>MacOS Keybind</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bold</td>
+      <td>Ctrl + B</td>
+      <td>Command + B</td>
+    </tr>
+    <tr>
+      <td>Italic</td>
+      <td>Ctrl + I</td>
+      <td>Command + I</td>
+    </tr>
+    <tr>
+      <td>Underline</td>
+      <td>Ctrl + U</td>
+      <td>Command + U</td>
+    </tr>
+    <tr>
+      <td>Undo</td>
+      <td>Ctrl + Z</td>
+      <td>Command + Z</td>
+    </tr>
+    <tr>
+      <td>Redo</td>
+      <td>Ctrl + Shift + Z</td>
+      <td>Command + Shift + Z</td>
+    </tr>
+    <tr>
+      <td>Select All</td>
+      <td>Ctrl + A</td>
+      <td>Command + A</td>
+    </tr>
+    <tr>
+      <td>Cut</td>
+      <td>Ctrl + X</td>
+      <td>Command + X</td>
+    </tr>
+    <tr>
+      <td>Copy</td>
+      <td>Ctrl + C</td>
+      <td>Command + C</td>
+    </tr>
+    <tr>
+      <td>Paste</td>
+      <td>Ctrl + V</td>
+      <td>Command + V</td>
+    </tr>
+    <tr>
+      <td>Strikethrough</td>
+      <td>Ctrl + Shift + S</td>
+      <td>Command + Shift + S</td>
+    </tr>
+    <tr>
+      <td>Bulleted List</td>
+      <td>Ctrl + Shift + L</td>
+      <td>Command + Shift + L</td>
+    </tr>
+    <tr>
+      <td>Numbered List</td>
+      <td>Ctrl + Shift + N</td>
+      <td>Command + Shift + N</td>
+    </tr>
+    <tr>
+      <td>Increase Indentation</td>
+      <td>Ctrl + Shift + ></td>
+      <td>Command + ]</td>
+    </tr>
+    <tr>
+      <td>Decrease Indentation</td>
+      <td>Ctrl + Shift + <</td>
+      <td>Command + [</td>
+    </tr>
+    <tr>
+      <td>Insert Link</td>
+      <td>Ctrl + K</td>
+      <td>Command + K</td>
+    </tr>
+    <tr>
+      <td>Justify Center</td>
+      <td>Ctrl + Shift + E</td>
+      <td>Command + Shift + E</td>
+    </tr>
+    <tr>
+      <td>Justify Left</td>
+      <td>Ctrl + Shift + L</td>
+      <td>Command + Shift + L</td>
+    </tr>
+    <tr>
+      <td>Justify Right</td>
+      <td>Ctrl + Shift + R</td>
+      <td>Command + Shift + R</td>
+    </tr>
+    <tr>
+      <td>Justify Full</td>
+      <td>Ctrl + Shift + J</td>
+      <td>Command + Shift + J</td>
+    </tr>
+  </tbody>
+</table></center>
+
+<script>
+  ClassicEditor
+    .create(document.querySelector('#editor'))
+    .catch(error => {
+      console.error(error);
+    });
+</script>
+<script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/with-markdown.js"></script>
+<script>
+  ClassicEditor
+    .create(document.querySelector('#editor'), {
+      plugins: [Markdown],
+      toolbar: ['heading', '|', 'bold', 'italic', '|', 'undo', 'redo']
+    })
+    .catch(error => {
+      console.error(error);
+    });
+</script>
+
+    </body>
+</html>
