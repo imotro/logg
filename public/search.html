@@ -80,43 +80,48 @@ header {
             <ul id="resultList"></ul>
         
             <script>
-                let shrug = {
-        log: (e)=>{console.log("%c[SHRUG]%c "+e, "color:orange", "color:white")},
-        get: (url, json)=>{let xhr = new XMLHttpRequest();xhr.open('GET',url,false);xhr.send();if(xhr.status===200){if(json)return JSON.parse(xhr.responseText);return xhr.responseText; } else { throw new Error('Synchronous fetch failed with status ' + xhr.status); } }
-      }
-                document.getElementById('searchInput').addEventListener('input', function () {
-                    searchJson(this.value);
-                });
-        
-                function searchJson(query) {
-                   let data = shrug.get('data.json', true)
-                   displayResults(data, query)
-                }
-                function displayResults(data, query) {
-                    const resultList = document.getElementById('resultList');
-                    resultList.innerHTML = '';
-        
-                    Object.keys(data).forEach(item => {
-                        if (containsQuery(item, query)) {
-                            const li = document.createElement('li');
-                            li.innerHTML = `<strong>${highlightText(item, query)}</strong> - ${highlightText(item.author, query)} - <a href="${item.link}" target="_blank">${item.link}</a>`;
-                            resultList.appendChild(li);
-                        }
-                    });
-                }
-        
-                function containsQuery(item, query) {
-                    return (
-                        item.name.toLowerCase().includes(query.toLowerCase()) ||
-                        item.author.toLowerCase().includes(query.toLowerCase()) ||
-                        item.link.toLowerCase().includes(query.toLowerCase())
-                    );
-                }
-        
-                function highlightText(text, query) {
-                    const regex = new RegExp(`(${query})`, 'gi');
-                    return text.replace(regex, '<span class="highlight">$1</span>');
-                }
+             let jsonData = null;
+
+// Replace 'your-json-file.json' with the path to your JSON file
+fetch('/data.json')
+    .then(response => response.json())
+    .then(data => {
+        jsonData = data;
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+
+document.getElementById('searchInput').addEventListener('input', function () {
+    searchJson(this.value);
+});
+
+function searchJson(query) {
+    if (!jsonData) {
+        console.error('JSON data not loaded yet.');
+        return;
+    }
+
+    const resultList = document.getElementById('resultList');
+    resultList.innerHTML = '';
+
+    Object.entries(jsonData).forEach(([blogKey, blog]) => {
+        if (containsQuery(blog, query)) {
+            const li = document.createElement('li');
+            li.innerHTML = `- <a href="${blog.banner}" target="_blank"><strong>${highlightText(blog.name, query)}</strong> - ${highlightText(blog.author, query)} </a>`;
+            resultList.appendChild(li);
+        }
+    });
+}
+
+function containsQuery(blog, query) {
+    return (
+        blog.name.toLowerCase().includes(query.toLowerCase())
+    );
+}
+
+function highlightText(text, query) {
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<span class="highlight">$1</span>');
+}
             </script>
         </body>
     </body>
