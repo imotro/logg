@@ -62,6 +62,29 @@ header {
     left: -50%;
     padding-left: 20px;
 }
+
+hightlight{
+  background:black;
+  color:yellow;
+}
+
+li {
+    text-decoration: none;
+    padding:5px;
+    outline: 2px solid white;
+    border-radius:20px;
+    height: 40px;
+    margin: 10px;
+}
+
+li > a {
+    color: white;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
 </style>
     </head>
     <body>
@@ -79,7 +102,7 @@ header {
             <input type="text" id="searchInput" placeholder="Search...">
             <ul id="resultList"></ul>
         
-            <script>
+            <script async>
              let jsonData = null;
 
 // Replace 'your-json-file.json' with the path to your JSON file
@@ -90,7 +113,7 @@ fetch('/data.json')
     })
     .catch(error => console.error('Error fetching JSON:', error));
 
-document.getElementById('searchInput').addEventListener('input', function () {
+onload = document.getElementById('searchInput').addEventListener('input', function () {
     searchJson(this.value);
 });
 
@@ -106,7 +129,7 @@ function searchJson(query) {
     Object.entries(jsonData).forEach(([blogKey, blog]) => {
         if (containsQuery(blog, query)) {
             const li = document.createElement('li');
-            li.innerHTML = `- <a href="${blog.banner}" target="_blank"><strong>${highlightText(blog.name, query)}</strong> - ${highlightText(blog.author, query)} </a>`;
+            li.innerHTML = `- <a href="${blog.banner}" target="_blank"><span style="color:wheat">${highlightText(blog.name, query)}</span> - ${highlightText(blog.author, query)} </a>`;
             resultList.appendChild(li);
         }
     });
